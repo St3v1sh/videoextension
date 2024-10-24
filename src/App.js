@@ -1,23 +1,63 @@
-import logo from './logo.svg';
+import { useEffect, useMemo, useState } from 'react';
 import './App.css';
+import ConnectDialogue from './component/ConnectDialogue/ConnectDialogue';
+import CommunicationError from './component/CommunicationError/CommunicationError';
+import OBSWebSocket from 'obs-websocket-js';
+import EffectPlayer from './component/EffectPlayer/EffectPlayer';
 
 function App() {
+  const settings = useMemo(() => window.tailGachaSettings, []);
+  const [connecting, setConnecting] = useState(true);
+  const [connectSuccess, setConnectSuccess] = useState(false);
+  const [videoQueue, setVideoQueue] = useState([]);
+
+  const [showConnectDialogue, setShowConnectDialogue] = useState(true);
+
+  useEffect(() => {
+    // Set up WebSocket.
+    const obs = new OBSWebSocket();
+
+    obs.on('ConnectionClosed', () => {
+      setConnectSuccess(false);
+    });
+
+    obs.on('CustomEvent', (payload) => {
+      const { effectName } = payload;
+      if (effectName) {
+        setVideoQueue((previousVideoQueue) => [...previousVideoQueue, effectName]);
+      }
+    });
+
+    obs.connect(settings.obsWebSocket, settings.password)
+      .then(() => {
+        setConnecting(false);
+        setConnectSuccess(true);
+      })
+      .catch(() => {
+        setConnecting(false);
+        setConnectSuccess(false);
+      });
+
+    return () => {
+      obs.disconnect();
+    };
+  }, [settings]);
+
+  useEffect(() => {
+    if (connectSuccess) {
+      const timer = setTimeout(() => {
+        setShowConnectDialogue(false);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EffectPlayer videoQueue={videoQueue} />
+      {showConnectDialogue && <ConnectDialogue isConnecting={connecting} isConnectSuccess={connectSuccess} />}
+      {!showConnectDialogue && !connecting && !connectSuccess && <CommunicationError />}
     </div>
   );
 }

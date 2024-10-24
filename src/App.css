@@ -1,38 +1,21 @@
+:root {
+  --primary-color-red: #a8001a;
+  --primary-color-red-rgb: 168, 0, 26;
+  --primary-color-cyan: #01cfcd;
+  --primary-color-cyan-rgb: 1, 207, 205;
+  --primary-color-purple: #9c00ce;
+  --primary-color-purple-rgb: 156, 0, 206;
+
+  --primary-color-dark: #18181b;
+  --primary-color-dark-rgb: 24, 24, 27;
+  --primary-color-text: #cccccc;
+  --primary-color-text-rgb: 204, 204, 204;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
 }

@@ -1,0 +1,56 @@
+.background {
+  width: 60rem;
+  height: 30rem;
+  background: repeating-linear-gradient(
+    60deg,
+    var(--primary-color-red),
+    var(--primary-color-purple),
+    var(--primary-color-red) 120rem
+  );
+  background-size: calc(120rem / sin(60deg)) 100%;
+  animation: gradient 1s linear infinite reverse;
+  display: flex;
+  border-radius: 10rem 0 10rem 0;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+@keyframes gradient {
+  100% {
+    background-position: calc(120rem / sin(60deg)) 0;
+  }
+}
+
+.connect-dialogue-container.success {
+  animation: slideDown 1.5s ease-in forwards;
+}
+
+@keyframes slideDown {
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color-dark);
+  border-radius: 6rem 0 6rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content span {
+  padding: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary-color-text);
+}
