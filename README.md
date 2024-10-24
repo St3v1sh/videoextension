@@ -4,6 +4,8 @@ This extension gives you a custom command to play video files on your computer t
 
 ## Setup
 
+https://github.com/user-attachments/assets/77ac4930-b6b1-410f-95d7-6c803c2a67e1
+
 ### SAMMI Extension
 
 1. Extract `videofx.zip` at some place you want to keep the application.
