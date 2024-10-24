@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Videofx SAMMI Extension
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This extension gives you a custom command to play video files on your computer through an OBS browser source.
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+### SAMMI Extension
 
-### `npm start`
+1. Extract `videofx.zip` at some place you want to keep the application.
+2. Open OBS Studio.
+3. Open SAMMI Core. On the left menu buttons, click on SAMMI Bridge > Open in a browser
+   - Note: this is useful for setting up the extension but it's recommended to [properly set up the bridge in your OBS dock](https://sammi.solutions/docs/getting-started/step-by-step#addbridgetoyourobsdock).
+4. Go back to SAMMI Core. On the left menu buttons, click on SAMMI Bridge > Install an Extension.
+   - Find to where you extracted `videofx.zip` and go to it.
+   - Find `videofx-extension.sef`, select, and open it.
+5. Back in SAMMI Core, you will now see a new deck called "Videofx Player". Inside it, you will see a sample button using the custom extension command `Play Video` with a field `Video File Path (Relative to Browser Source)`. This is how you can play on the browser source.
+6. Go to your bridge. You should now be able to see a new extension tab `Videofx`. If you click on it, you will be able to specify your OBS WebSocket address and password if you changed the defaults.
+   - These details can be found in OBS Studio > Tools > WebSocket Server Settings.
+   - If the status circle is green, you've successfully connected the extension to OBS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### OBS Browser Source
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+7. Go to your OBS Studio.
+8. Create a new Browser source
+   - Name it whatever you find most useful.
+   - Check the "Local file" checkbox and browse to where you extracted `videofx.zip`.
+   - Find `index.html`, select it, and open it.
+   - You may make the browser source whatever size fits your needs, but be aware that videos which don't take up the entire space will be centered in the browser source.
+   - Click OK.
+   - If you see the loading dialogue and no errors, then you've successfully connected the browser source to OBS.
+9. Test the browser source with the `Video Player` deck by going to the test button and clicking `Run`.
 
-### `npm test`
+## Adding more videos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+NOTE: Browser sources can only support video files of the types `.mp4`, `.webm`, and `.ogg`.
 
-### `npm run build`
+NOTE: Only the `.webm` video file supports an alpha channel (transparency). If you wish to have transparency and to use `.mp4` or `.ogg` you will need to manually add a chroma key to the browser source.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To add more videos, put them into the `videos` folder in your extracted `videofx` folder.
