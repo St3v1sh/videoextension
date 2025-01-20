@@ -3,9 +3,9 @@
   height: 30rem;
   background: repeating-linear-gradient(
     60deg,
-    var(--primary-color-red),
+    var(--primary-color-cyan),
     var(--primary-color-purple),
-    var(--primary-color-red) 120rem
+    var(--primary-color-cyan) 120rem
   );
   background-size: calc(120rem / sin(60deg)) 100%;
   animation: gradient 1s linear infinite reverse;

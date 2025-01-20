@@ -4,6 +4,7 @@ import ConnectDialogue from './component/ConnectDialogue/ConnectDialogue';
 import CommunicationError from './component/CommunicationError/CommunicationError';
 import OBSWebSocket from 'obs-websocket-js';
 import EffectPlayer from './component/EffectPlayer/EffectPlayer';
+import { VideoData } from './utils/video-data';
 
 function App() {
   const settings = useMemo(() => window.tailGachaSettings, []);
@@ -22,9 +23,13 @@ function App() {
     });
 
     obs.on('CustomEvent', (payload) => {
-      const { effectName } = payload;
+      const { effectName, xOffset, yOffset, hAlignment = 'center', vAlignment = 'center', mute = false } = payload;
       if (effectName) {
-        setVideoQueue((previousVideoQueue) => [...previousVideoQueue, effectName]);
+        const normalizedPath = effectName.replace(/\\/g, '/');
+        const fileName = normalizedPath.split('/').pop();
+        const videoData = new VideoData(fileName, xOffset, yOffset, hAlignment.toString().toLowerCase(), vAlignment.toString().toLowerCase(), mute);
+
+        setVideoQueue((previousVideoQueue) => [...previousVideoQueue, videoData]);
       }
     });
 
@@ -55,9 +60,9 @@ function App() {
 
   return (
     <div className="App">
-      <EffectPlayer videoQueue={videoQueue} />
       {showConnectDialogue && <ConnectDialogue isConnecting={connecting} isConnectSuccess={connectSuccess} />}
       {!showConnectDialogue && !connecting && !connectSuccess && <CommunicationError />}
+      {!showConnectDialogue && !connecting && connectSuccess && <EffectPlayer videoQueue={videoQueue} />}
     </div>
   );
 }

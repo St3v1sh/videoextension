@@ -12,7 +12,7 @@ export default function ConnectDialogue({ isConnecting, isConnectSuccess }) {
                         {(isConnecting || isConnectSuccess) ?
                             loadingMessage :
                             <>
-                                {'Connection error. Are the OBS WebSocket address and password (if you set one) in '}<code>{'settings.json'}</code>{' correct?'}
+                                {'Connection error. Are the OBS WebSocket address and password in '}<code>{'settings.json'}</code>{' correct?'}
                             </>
                         }
                     </span>

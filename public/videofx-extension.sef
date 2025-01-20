@@ -31,7 +31,11 @@ This SAMMI extension from the Videofx application uses the SAMMI Bridge to make 
 </div>
 [insert_command]
 SAMMI.extCommand('Play Video', 3355443, 52, {
-    effectName: ['Video File Path (Relative to Browser Source)', 14, '']
+    effectName: ['Video File Path', 22, ''],
+    xOffset: ['X-Offset', 15, '0'],
+    yOffset: ['Y-Offset', 15, '0'],
+    hAlignment: ['Horizontal Alignment', 19, 'Center', null, ['Left', 'Center', 'Right']],
+    vAlignment: ['Vertical Alignment', 19, 'Center', null, ['Top', 'Center', 'Bottom']]
 });
 sammiclient.on('Play Video', (payload) => {
     obs.call('BroadcastCustomEvent', {eventData: payload.Data});
@@ -87,4 +91,4 @@ if (!processForm) {
 
 connectToOBS();
 [insert_over]
-{ "deck_data": "{ \"background_color\": 4210752.0, \"on\": true, \"grid_y\": 10.0, \"snap_grid\": true, \"lb_version\": \"2024.3.1\", \"background_image\": \"\", \"sammi_version\": \"2024.3.1\", \"adaptive_resizing\": true, \"unique_id\": \"20241024164233315018273\", \"button_list\": [ { \"color\": 12632256.0, \"persistent\": true, \"text\": \"Ferret Jump Dead\", \"release_duration\": 0.0, \"queueable\": false, \"command_list\": [ { \"effectName\": \"ferret-jump-dead.mp4\", \"cmd\": 0.0, \"obsid\": \"Main\", \"pos\": 0.0, \"vis\": true, \"ms\": 0.0, \"sel\": false, \"dis\": false, \"xpan\": 0.0, \"extcmd\": \"Play Video\", \"ext\": \"SAMMI Bridge\" } ], \"press_type\": 0.0, \"x\": 0.0, \"is_transparent\": false, \"border\": 2.0, \"image\": \"\", \"triggers\": [ ], \"group_id\": \"\", \"overlappable\": false, \"init_variable\": \"\", \"deck\": 1.0, \"width\": 0.10000000000000000555111512312578, \"button_id\": \"ID1\", \"button_duration\": 0.0, \"y\": 0.0, \"switch_deck\": \"\", \"height\": 0.10000000000000000555111512312578, \"release_list\": [ ], \"functions\": 65.0, \"stretch\": false } ], \"deck_name\": \"Videofx Player\", \"grid_x\": 10.0, \"stretch\": false }", "unique_id": "20241024164233315018273", "include_image": { } }
+{ "deck_data": "{ \"background_color\": 4210752.0, \"on\": true, \"grid_y\": 10.0, \"snap_grid\": 1.0, \"lb_version\": \"2024.3.1\", \"background_image\": \"\", \"sammi_version\": \"2024.3.1\", \"adaptive_resizing\": 1.0, \"unique_id\": \"20241024164233315018273\", \"button_list\": [ { \"color\": 12632256.0, \"persistent\": 1.0, \"text\": \"Ferret Jump Dead\", \"release_duration\": 0.0, \"queueable\": 0.0, \"command_list\": [ { \"vAlignment\": \"Center\", \"effectName\": \"ferret-jump-dead.mp4\", \"yOffset\": \"0\", \"cmd\": 0.0, \"obsid\": \"Main\", \"pos\": 0.0, \"hAlignment\": \"Center\", \"vis\": 1.0, \"ms\": 0.0, \"sel\": false, \"dis\": 0.0, \"xpan\": 0.0, \"xOffset\": \"0\", \"extcmd\": \"Play Video\", \"ext\": \"SAMMI Bridge\" } ], \"press_type\": 0.0, \"x\": 0.0, \"is_transparent\": 0.0, \"border\": 2.0, \"image\": \"\", \"triggers\": [ ], \"group_id\": \"\", \"overlappable\": 0.0, \"init_variable\": \"\", \"deck\": 1.0, \"width\": 0.10000000000000000555111512312578, \"button_id\": \"ID6\", \"button_duration\": 0.0, \"y\": 0.0, \"switch_deck\": \"\", \"height\": 0.10000000000000000555111512312578, \"release_list\": [ ], \"functions\": 65.0, \"stretch\": 0.0 } ], \"deck_name\": \"Videofx Player\", \"grid_x\": 10.0, \"stretch\": 0.0 }", "unique_id": "20241024164233315018273", "include_image": { } }
