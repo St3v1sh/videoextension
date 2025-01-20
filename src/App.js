@@ -27,7 +27,7 @@ function App() {
       if (effectName) {
         const normalizedPath = effectName.replace(/\\/g, '/');
         const fileName = normalizedPath.split('/').pop();
-        const videoData = new VideoData(fileName, xOffset, yOffset, hAlignment.toString().toLowerCase(), vAlignment.toString().toLowerCase(), mute);
+        const videoData = new VideoData(Date.now(), fileName, xOffset, yOffset, hAlignment.toString().toLowerCase(), vAlignment.toString().toLowerCase(), mute);
 
         setVideoQueue((previousVideoQueue) => [...previousVideoQueue, videoData]);
       }
@@ -58,11 +58,15 @@ function App() {
     }
   });
 
+  const deleteVideo = (id) => {
+    setVideoQueue((previousVideoQueue) => previousVideoQueue.filter((video) => video.id !== id));
+  };
+
   return (
     <div className="App">
       {showConnectDialogue && <ConnectDialogue isConnecting={connecting} isConnectSuccess={connectSuccess} />}
       {!showConnectDialogue && !connecting && !connectSuccess && <CommunicationError />}
-      {!showConnectDialogue && !connecting && connectSuccess && <EffectPlayer videoQueue={videoQueue} />}
+      {!showConnectDialogue && !connecting && connectSuccess && <EffectPlayer videoQueue={videoQueue} onEnded={deleteVideo} />}
     </div>
   );
 }
