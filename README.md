@@ -2,10 +2,6 @@
 
 This extension gives you a custom command to play video files on your computer through an OBS browser source.
 
-## Asynchronous Videos Branch
-
-This branch contains a version that plays the videos asynchronously instead of waiting for the previous to finish.
-
 ## Setup
 
 https://github.com/user-attachments/assets/77ac4930-b6b1-410f-95d7-6c803c2a67e1
