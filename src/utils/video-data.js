@@ -1,10 +1,11 @@
 export class VideoData {
-    constructor(fileName, xOffset, yOffset, hAlignment, vAlignment, mute) {
+    constructor(id, fileName, xOffset, yOffset, hAlignment, vAlignment, synchronous) {
+        this.id = id;
         this.fileName = fileName;
         this.xOffset = xOffset;
         this.yOffset = yOffset;
         this.hAlignment = hAlignment;
         this.vAlignment = vAlignment;
-        this.mute = mute;
+        this.synchronous = synchronous;
     }
 }

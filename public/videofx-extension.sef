@@ -35,7 +35,8 @@ SAMMI.extCommand('Play Video', 3355443, 52, {
     xOffset: ['X-Offset', 15, '0'],
     yOffset: ['Y-Offset', 15, '0'],
     hAlignment: ['Horizontal Alignment', 19, 'Center', null, ['Left', 'Center', 'Right']],
-    vAlignment: ['Vertical Alignment', 19, 'Center', null, ['Top', 'Center', 'Bottom']]
+    vAlignment: ['Vertical Alignment', 19, 'Center', null, ['Top', 'Center', 'Bottom']],
+    synchronous: ['Use Synchronous Queue', 2, false]
 });
 sammiclient.on('Play Video', (payload) => {
     obs.call('BroadcastCustomEvent', {eventData: payload.Data});
